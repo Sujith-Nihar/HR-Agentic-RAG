@@ -22,14 +22,22 @@ class QueryEngine:
         return chunks, metadatas
 
     def generate_answer_with_ollama(self, context, question):
-        prompt = f"""You are an HR assistant. Use the context below to answer the question accurately.
+        prompt = f"""
+        You are a helpful and knowledgeable HR assistant.
 
-        Context:
+        The user may greet you, ask a general question, or ask something related to HR policies.
+
+        If it is a greeting (e.g., "hi", "hello", "good morning"), just respond politely and don't mention any documents or any information.
+
+        If it's a real question about HR topics like benefits, leave, remote work, sick days, etc., then answer clearly using the information below. Don't say "According to the document" or "based on context" — just answer confidently.
+
+        HR Knowledge Base:
         {context}
 
-        Question: {question}
+        User: {question}
 
-        Answer:"""
+        Answer:
+        """.strip()
 
         result = subprocess.run(
             ["ollama", "run", self.llm_model],

@@ -1,0 +1,2 @@
+[watcher]
+exclude_glob = ["*/torch/*"]

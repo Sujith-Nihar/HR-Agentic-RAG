@@ -3,3 +3,4 @@ chromadb
 pdfplumber
 python-docx
 tiktoken
+streamlit
